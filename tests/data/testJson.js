@@ -71,6 +71,30 @@ const testCases = [
         },
     },
     {
+        name: "nodejs : NaN Handling",
+        reqObject: {
+            language: "nodejs",
+            script: "console.log(1 / 'a');",
+        },
+        expectedResponse: {
+            val: "NaN\n",
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: "nodejs : Asynchronous Example",
+        reqObject: {
+            language: "nodejs",
+            script: "setTimeout(() => { console.log('Delayed Hello World'); }, 1000);",
+        },
+        expectedResponse: {
+            val: "Delayed Hello World\n",
+            status: 200,
+            error: 0,
+        },
+    },
+    {
         name: 'python : hello world',
         reqObject: {
             language: 'python',
@@ -99,6 +123,18 @@ const testCases = [
         },
         expectedResponse: {
             val: '1 2 3\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: "nodejs : Asynchronous Example",
+        reqObject: {
+            language: "nodejs",
+            script: "setTimeout(() => { console.log('Delayed Hello World'); }, 1000);",
+        },
+        expectedResponse: {
+            val: "Delayed Hello World\n",
             status: 200,
             error: 0,
         },
@@ -142,6 +178,19 @@ const testCases = [
         },
     },
     {
+        name: "c : Factorial Calculation",
+        reqObject: {
+            language: "c",
+            script:
+                '#include <stdio.h>\nint factorial(int n) {\n  if (n <= 1)\n    return 1;\n  else\n    return n * factorial(n - 1);\n}\nint main() {\n  int num = 5;\n  printf("Factorial of %d is %d\\n", num, factorial(num));\n  return 0;\n}',
+        },
+        expectedResponse: {
+            val: "Factorial of 5 is 120\n",
+            status: 200,
+            error: 0,
+        },
+    },
+    {
         name: 'java : print stdin',
         reqObject: {
             language: 'java',
@@ -155,6 +204,18 @@ const testCases = [
         },
         expectedResponse: {
             val: 'hello world\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: "c : Segmentation Fault",
+        reqObject: {
+            language: "c",
+            script: '#include <stdio.h>\nint main() {\n    int *ptr = NULL;\n    printf("%d\\n", *ptr);\n    return 0;\n}',
+        },
+        expectedResponse: {
+            val: "Segmentation fault\n",
             status: 200,
             error: 0,
         },
@@ -294,6 +355,44 @@ const testCases = [
         },
         expectedResponse: {
             val: {},
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: "go : print stdin",
+        reqObject: {
+            language: "go",
+            script: "package main\n" + 'import "fmt"\n' + "func main() {\n" + '    fmt.Println("hello world")\n' + "}\n",
+        },
+        expectedResponse: {
+            val: "hello world\n",
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: "go : calculate sum",
+        reqObject: {
+            language: "go",
+            script: "package main\n" + 'import "fmt"\n' + "func main() {\n" + "    a := 5\n" + "    b := 7\n" + "    fmt.Println(a + b)\n" + "}\n",
+        },
+        expectedResponse: {
+            val: "12\n",
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: "go : read and print input",
+        reqObject: {
+            language: "go",
+            script:
+                'package main\nimport "fmt"\nimport "os"\nimport "bufio"\nfunc main() {\n    reader := bufio.NewReader(os.Stdin)\n    fmt.Print("Enter text: ")\n    text, _ := reader.ReadString(\'\\n\')\n    fmt.Println(text)\n}\n',
+            stdin: "Hello, Golang!\n",
+        },
+        expectedResponse: {
+            val: "Enter text: Hello, Golang!\n\n",
             status: 200,
             error: 0,
         },
