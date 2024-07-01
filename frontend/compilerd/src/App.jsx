@@ -9,7 +9,7 @@ function App() {
 
   const [value, setValue] = useState({
     language: "JAVASCRIPT",
-    script: "console.log('Hello, World!');",
+    script: "//Write Your Code Below \nconsole.log('Hello, World!');",
     result: {
       output: "",
       execute_time: null,
@@ -54,8 +54,11 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="flex justify-center items-center flex-col pt-5 pb-2 gap-2">
-        <h1 className="text-5xl font-extrabold leading-none line-through">CompilerD</h1>
-        <p className="text-lg font-normal text-gray-400">Your Online Code Judge</p>
+        <img className="w-8 h-8 mr-2" src="https://thumbs.dreamstime.com/b/compiler-isolated-icon-simple-element-illustration-programming-concept-icons-editable-logo-sign-symbol-design-white-142291444.jpg" alt="" />
+
+
+        <h1 className="text-5xl font-extrabold leading-none underline">CompilerD</h1>
+        <p className="text-lg font-normal text-gray-400">Your Online Code Compiler</p>
       </div>
       <CodeNav value={value} handleOnChange={onCodeChange} handleOnRun={onCodeRun} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-1 px-4">

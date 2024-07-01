@@ -12,6 +12,7 @@ export default function CodeNav({ value, handleOnChange, handleOnRun }) {
 
     return (
         <div className="w-full px-4 pt-2 pb-3 flex items-center justify-start flex-wrap gap-4">
+            <h1 className="font-medium">Select Your Language</h1>
             <Menu as="div" className="relative inline-block text-left">
                 <div>
                     <MenuButton className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700">
@@ -45,7 +46,7 @@ export default function CodeNav({ value, handleOnChange, handleOnRun }) {
                 </MenuItems>
             </Menu>
 
-            <button className="font-medium rounded-lg text-sm px-5 py-2.5 bg-blue-700 hover:bg-blue-800" onClick={handleOnRun}>
+            <button className="font-medium rounded-lg text-sm px-5 py-2.5 bg-green-700 hover:bg-green-800" onClick={handleOnRun}>
                 {value.isLoading ? <LoaderCircle className=" animate-spin" /> : "RUN"}
             </button>
         </div>
